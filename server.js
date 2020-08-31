@@ -22,7 +22,11 @@ app.get('/users', function(req, res) {
 
 app.get('/findUser/:username', function(req, res) {
     db.Users.findOne({username: req.params.username}).then(function(response) {
-        res.json(response)
+        if(response) {
+            res.json(response)
+        } else {
+            res.send('No User found')
+        }
     })
 })
 
