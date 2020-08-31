@@ -17,7 +17,7 @@ app.get('/', function(req, res) {
 app.get('/users', function(req, res) {
     db.Users.find().then(function(response) {
         res.json(response)
-    })
+    }).catch(err => res.send(err))
 })
 
 app.get('/findUser/:username', function(req, res) {
@@ -27,25 +27,25 @@ app.get('/findUser/:username', function(req, res) {
         } else {
             res.json({"error": "No User Found"})
         }
-    })
+    }).catch(err => res.send(err))
 })
 
 app.post('/addUser', function(req, res) {
     db.Users.create(req.body).then(function(dbUser) {
         res.json(dbUser)
-    })
+    }).catch(err => res.send(err))
 })
 
 app.get('/users/:id/schedule', function(req, res) {
     db.Schedule.find({userId: req.params.id}).then(function(response) {
         res.json(response)
-    })
+    }).catch(err => res.send(err))
 })
 
 app.post('/addScheduleBlock', function(req, res) {
     db.Schedule.create(req.body).then(function(response) {
         res.json(response)
-    })
+    }).catch(err => res.send(err))
 })
 
 let MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
