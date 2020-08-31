@@ -25,7 +25,7 @@ app.get('/findUser/:username', function(req, res) {
         if(response) {
             res.json(response)
         } else {
-            res.send('No User found')
+            res.json({"error": "No User Found"})
         }
     })
 })
