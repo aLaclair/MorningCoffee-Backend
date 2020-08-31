@@ -1,5 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const schedule = require('node-schedule')
 
 const db = require('./models')
 
@@ -46,6 +47,12 @@ app.post('/addScheduleBlock', function(req, res) {
     db.Schedule.create(req.body).then(function(response) {
         res.json(response)
     }).catch(err => res.send(err))
+})
+
+const drop = schedule.scheduleJob('0 0 * * *', () => {
+    db.Schedule.deleteMany({}).then(function(response) {
+        console.log(response)
+    })
 })
 
 let MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
