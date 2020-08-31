@@ -20,6 +20,12 @@ app.get('/users', function(req, res) {
     })
 })
 
+app.get('/findUser/:username', function(req, res) {
+    db.Users.findOne({username: req.params.username}).then(function(response) {
+        res.json(response)
+    })
+})
+
 app.post('/addUser', function(req, res) {
     db.Users.create(req.body).then(function(dbUser) {
         res.send(dbUser)
@@ -34,7 +40,7 @@ app.get('/users/:id/schedule', function(req, res) {
 
 app.post('/addScheduleBlock', function(req, res) {
     db.Schedule.create(req.body).then(function(response) {
-        res.json(response)
+        res.send(response)
     })
 })
 
