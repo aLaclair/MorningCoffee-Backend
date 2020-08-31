@@ -32,7 +32,7 @@ app.get('/findUser/:username', function(req, res) {
 
 app.post('/addUser', function(req, res) {
     db.Users.create(req.body).then(function(dbUser) {
-        res.send(dbUser)
+        res.json(dbUser)
     })
 })
 
@@ -44,7 +44,7 @@ app.get('/users/:id/schedule', function(req, res) {
 
 app.post('/addScheduleBlock', function(req, res) {
     db.Schedule.create(req.body).then(function(response) {
-        res.send(response)
+        res.json(response)
     })
 })
 
