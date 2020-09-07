@@ -49,6 +49,12 @@ app.post('/addScheduleBlock', function(req, res) {
     }).catch(err => res.send(err))
 })
 
+app.get('/delete/:id', function(req, res) {
+    db.Schedule.deleteOne({_id: req.params.id}.then(function(response) {
+        res.send(response)
+    }))
+})
+
 const drop = schedule.scheduleJob('* 0 * * *', () => {
     db.Schedule.deleteMany({}).then(function(response) {
         console.log(response)
