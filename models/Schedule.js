@@ -15,7 +15,7 @@ const ScheduleBlock = new Schema({
         type: String,
     },
     endTime: {
-        type: Number,
+        type: String,
         required: true
     }
 })

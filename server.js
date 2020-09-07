@@ -49,7 +49,7 @@ app.post('/addScheduleBlock', function(req, res) {
     }).catch(err => res.send(err))
 })
 
-const drop = schedule.scheduleJob('0 0 * * *', () => {
+const drop = schedule.scheduleJob('* 0 * * *', () => {
     db.Schedule.deleteMany({}).then(function(response) {
         console.log(response)
     })
