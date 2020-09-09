@@ -49,10 +49,10 @@ app.post('/addScheduleBlock', function(req, res) {
     }).catch(err => res.send(err))
 })
 
-app.delete('/delete/:id', function(req, res) {
-    db.Schedule.deleteOne({_id: req.params.id}.then(function(response) {
-        res.send(response)
-    }))
+app.get('/delete/block/:id', function(req, res) {
+    db.Schedule.deleteOne({_id: req.params.id}).then(function(response) {
+        res.json(response)
+    }).catch(err => res.send(err))
 })
 
 const drop = schedule.scheduleJob('* 0 * * *', () => {
