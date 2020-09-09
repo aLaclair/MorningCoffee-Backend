@@ -49,7 +49,7 @@ app.post('/addScheduleBlock', function(req, res) {
     }).catch(err => res.send(err))
 })
 
-app.get('/delete/:id', function(req, res) {
+app.delete('/delete/:id', function(req, res) {
     db.Schedule.deleteOne({_id: req.params.id}.then(function(response) {
         res.send(response)
     }))
