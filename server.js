@@ -38,7 +38,7 @@ app.post('/addUser', function(req, res) {
 })
 
 app.get('/users/:id/schedule', function(req, res) {
-    db.Schedule.find({userId: req.params.id}).then(function(response) {
+    db.Schedule.find({userId: req.params.id}).sort({endTime: 'asc'}).then(function(response) {
         res.json(response)
     }).catch(err => res.send(err))
 })
