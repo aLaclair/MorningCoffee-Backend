@@ -55,11 +55,17 @@ app.get('/delete/block/:id', function(req, res) {
     }).catch(err => res.send(err))
 })
 
-const drop = schedule.scheduleJob('* 0 * * *', () => {
-    db.Schedule.deleteMany({}).then(function(response) {
-        console.log(response)
-    })
-})
+setInterval(() => {
+    let date = new Date
+    if (date.getHours() === 0) {
+        db.Schedule.deleteMany({}).then(response => {
+            console.log(response)
+        })
+    } else {
+        console.log('not midnight')
+    }
+}, 900000)
+
 
 let MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 
