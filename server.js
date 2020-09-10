@@ -10,6 +10,10 @@ const app = express()
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+  });
 
 app.get('/', function(req, res) {
     res.send('This is the backend for my app MorningCoffee')
