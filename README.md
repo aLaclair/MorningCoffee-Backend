@@ -7,12 +7,18 @@ This is the backend to the application MorningCoffee, check out the links below
 
 ## API Endpoints
 
-* GET /users will display user information **You will be able to see passwords, but this is not a secure site so the passswords are unmeaningful**
-* GET /users/:id/schedule will display users schedule for the day if any
-* GET /findUser/:username will search for a particular user
-* POST /addUser will add a user to the database
-* POST /addScheduleBlock will add a schedule block to for the user
-* GET /delete/block/:id will delete whichever schedule block was clicked
+* **GET /users** will display user information **You will be able to see passwords, but this is not a secure site so the passswords are unmeaningful**
+* **GET /users/:id/schedule** will display users schedule for the day if any
+* **GET /findUser/:username** will search for a particular user
+* **POST /addUser** will add a user to the database
+* **POST /addScheduleBlock** will add a schedule block to for the user
+* **GET /delete/block/:id** will delete whichever schedule block was clicked
+
+## Technologies used
+* Node.js
+* Express.js
+* MongoDB
+* Mongoose
 
 ## Contributor/Owner
 * Austin LaClair
