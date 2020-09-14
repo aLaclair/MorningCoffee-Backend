@@ -1,6 +1,5 @@
 const express = require('express')
 const mongoose = require('mongoose')
-const schedule = require('node-schedule')
 const cors = require('cors')
 
 const db = require('./models')
