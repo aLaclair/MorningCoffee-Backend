@@ -1,6 +1,6 @@
-const Schedule = require('./Schedule');
+const Schedule = require("./Schedule");
 
 module.exports = {
-    Users: require('./Users'),
-    Schedule: require('./Schedule')
-}
+  Users: require("./Users"),
+  Schedule: require("./Schedule"),
+};
