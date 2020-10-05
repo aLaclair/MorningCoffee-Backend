@@ -18,6 +18,10 @@ const ScheduleBlock = new Schema({
     type: String,
     required: true,
   },
+  checked: {
+    type: Boolean,
+    default: false
+  }
 });
 
 const Schedule = mongoose.model("ScheduleBlock", ScheduleBlock);
