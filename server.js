@@ -70,10 +70,16 @@ app.get("/delete/block/:id", function (req, res) {
 });
 
 app.post('/:id/update', function (req, res) {
-  db.Schedule.findByIdAndUpdate({_id: req.params.id}, {checked: req.body.checked}, function(err) {
+  db.Schedule.findByIdAndUpdate({_id: req.params.id}, {checked: req.body.checked}, function(err, docs) {
     if (err) throw err
     else {
-      res.send('updated')
+        id = docs.userId
+        db.Schedule.find({userId: id})
+        .sort({endTime: 'asc'})
+        .then(function (response) {
+          res.json(response)
+        })
+        .catch((err) => res.send(err));
     }
   })
 })
