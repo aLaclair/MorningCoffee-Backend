@@ -69,6 +69,15 @@ app.get("/delete/block/:id", function (req, res) {
     .catch((err) => res.send(err));
 });
 
+app.post('/:id/update', function (req, res) {
+  db.Schedule.findByIdAndUpdate({_id: req.params.id}, {checked: req.body.checked}, function(err) {
+    if (err) throw err
+    else {
+      res.send('updated')
+    }
+  })
+})
+
 setInterval(() => {
   let date = new Date();
   if (date.getHours() === 0) {
